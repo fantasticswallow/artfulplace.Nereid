@@ -1,0 +1,14 @@
+﻿<CustomUI x:Class="NereidXmlTest.NereidTest"
+             xmlns="clr-namespace:artfulplace.Nereid;assembly=artfulplace.Nereid"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NereidXmlTest">
+    <Ribbon>
+        <Tabs>
+            <Tab IdMso="TabAddIns">
+                <Group Id="MyGroup" Label="My Group">
+                    <Button Id="aaaa" Label="aaaa" />
+                </Group>
+            </Tab>
+        </Tabs>
+    </Ribbon>
+</CustomUI>

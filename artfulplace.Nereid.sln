@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artfulplace.Nereid", "artfulplace.Nereid\artfulplace.Nereid.csproj", "{00424894-B8D2-4A91-8EF5-4500ECA52586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NereidXmlTest", "NereidXmlTest\NereidXmlTest.csproj", "{FAED9A95-B268-4D7C-B4B9-5E03E313EBB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NereidTestAddin", "NereidTestAddin\NereidTestAddin.csproj", "{7BDCE9A1-EF14-4A63-8548-15EA6D524A2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00424894-B8D2-4A91-8EF5-4500ECA52586}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00424894-B8D2-4A91-8EF5-4500ECA52586}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00424894-B8D2-4A91-8EF5-4500ECA52586}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00424894-B8D2-4A91-8EF5-4500ECA52586}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAED9A95-B268-4D7C-B4B9-5E03E313EBB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAED9A95-B268-4D7C-B4B9-5E03E313EBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAED9A95-B268-4D7C-B4B9-5E03E313EBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAED9A95-B268-4D7C-B4B9-5E03E313EBB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDCE9A1-EF14-4A63-8548-15EA6D524A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDCE9A1-EF14-4A63-8548-15EA6D524A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDCE9A1-EF14-4A63-8548-15EA6D524A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDCE9A1-EF14-4A63-8548-15EA6D524A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
