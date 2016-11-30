@@ -1,5 +1,7 @@
-﻿using System;
+﻿using artfulplace.Nereid;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,21 @@ namespace NereidXmlTest
         {
             InitializeComponent();
             
+        }
+
+        private void Button_Click(object arg1, ButtonEventArgs arg2)
+        {
+            Debug.WriteLine("aaa");
+        }
+
+        private void Button_Click_1(object arg1, ButtonEventArgs arg2)
+        {
+            Debug.WriteLine("bbb");
+        }
+
+        private void Button_Click_2(object arg1, ButtonEventArgs arg2)
+        {
+            Debug.WriteLine("cccc");
         }
     }
 }

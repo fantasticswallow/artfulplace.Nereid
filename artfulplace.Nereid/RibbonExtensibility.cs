@@ -66,9 +66,9 @@ namespace artfulplace.Nereid
             this.ribbon = ribbonUI;
         }
 
-        public void NereidButton_Click(dynamic arg)
+        public void NereidButton_Click(Office.IRibbonControl arg)
         {
-            var args = new ButtonEventArgs(arg.Id.ToString(), arg.Tag, (object)arg.Context);
+            var args = new ButtonEventArgs(arg.Id, arg.Tag, (object)arg.Context);
             var button = (Button)RibbonItems.First(x => x is Button && ((Button)x).Id == args.Id);
             button.OnClick(args);
 
