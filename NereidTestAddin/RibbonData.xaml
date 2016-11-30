@@ -6,7 +6,9 @@
         <Tabs>
             <Tab IdMso="TabAddIns">
                 <Group Id="MyGroup" Label="My Group">
-                    <Button Id="aaaa" Label="aaaa" />
+                    <Button Id="aaaa" Label="aaaa" Click="Button_Click" />
+                    <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
+                    <Button Id="cccc" Label="cccc" Click="Button_Click_2" />
                 </Group>
             </Tab>
         </Tabs>

@@ -16,6 +16,8 @@ namespace artfulplace.Nereid
             var param = new Dictionary<string, object>();
             param.Add("id", Id);
             param.Add("label", Label);
+            param.Add("onAction", "NereidButton_Click");
+
             return XmlUtility.CreateXml("button", param);
         }
 
@@ -41,5 +43,16 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register("Label", typeof(string), typeof(Button), new PropertyMetadata(""));
 
+        internal void OnClick(ButtonEventArgs e)
+        {
+            Click?.Invoke(this, e);
+        }
+
+        public event Action<object, ButtonEventArgs> Click;
+
+        public bool HasCollection()
+        {
+            return false;
+        }
     }
 }

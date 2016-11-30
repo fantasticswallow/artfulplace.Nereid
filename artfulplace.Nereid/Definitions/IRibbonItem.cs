@@ -9,5 +9,10 @@ namespace artfulplace.Nereid.Definitions
     public interface IRibbonItem
     {
         string GetRibbonXml();
+        /// <summary>
+        /// object has any elements to UiChild property.
+        /// </summary>
+        /// <returns></returns>
+        bool HasCollection();
     }
 }

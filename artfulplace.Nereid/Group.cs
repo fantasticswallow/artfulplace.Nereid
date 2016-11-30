@@ -27,6 +27,11 @@ namespace artfulplace.Nereid
             set { SetValue(UiChildProperty, value); }
         }
 
+        public bool HasCollection()
+        {
+            return true;
+        }
+
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UiChildProperty =
             DependencyProperty.Register("UiChild", typeof(List<Definitions.IGroupChild>), typeof(Group), new PropertyMetadata(new List<Definitions.IGroupChild>()));

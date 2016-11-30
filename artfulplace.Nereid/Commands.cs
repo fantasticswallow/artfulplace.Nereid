@@ -26,7 +26,10 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty UiChildProperty =
             DependencyProperty.Register("UiChild", typeof(List<Command>), typeof(Commands), new PropertyMetadata(new List<Command>()));
 
-
+        public bool HasCollection()
+        {
+            return true;
+        }
 
 
 
@@ -49,6 +52,11 @@ namespace artfulplace.Nereid
         public string GetRibbonXml()
         {
             throw new NotImplementedException();
+        }
+
+        public bool HasCollection()
+        {
+            return false;
         }
     }
 }

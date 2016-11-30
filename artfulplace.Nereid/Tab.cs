@@ -20,6 +20,10 @@ namespace artfulplace.Nereid
             return head + string.Concat(UiChild.Select(x => x.GetRibbonXml()).ToArray()) + foot;
         }
 
+        public bool HasCollection()
+        {
+            return true;
+        }
 
         public List<Group> UiChild
         {
@@ -57,6 +61,10 @@ namespace artfulplace.Nereid
             return head + string.Concat(UiChild.Select(x => x.GetRibbonXml()).ToArray()) + foot;
         }
 
+        public bool HasCollection()
+        {
+            return true;
+        }
 
 
         public List<Tab> UiChild

@@ -31,5 +31,10 @@ namespace artfulplace.Nereid
             var foot = "</customUI>";
             return head + UiChild.GetRibbonXml() + foot;
         }
+
+        public bool HasCollection()
+        {
+            return false;
+        }
     }
 }

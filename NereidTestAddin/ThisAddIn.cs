@@ -23,6 +23,7 @@ namespace NereidTestAddin
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
             return new artfulplace.Nereid.RibbonExtensibility(new RibbonData());
+            // return new Ribbon1();
         }
 
         #region VSTO で生成されたコード

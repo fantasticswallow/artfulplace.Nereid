@@ -23,7 +23,10 @@ namespace artfulplace.Nereid
             return head + UiChild.GetRibbonXml() +  foot;
         }
 
-
+        public bool HasCollection()
+        {
+            return false;
+        }
 
         public Definitions.IRibbonChild UiChild
         {

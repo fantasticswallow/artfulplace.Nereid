@@ -54,6 +54,7 @@
     <Compile Include="CustomUI.cs" />
     <Compile Include="Definitions\IRibbonStricts.cs" />
     <Compile Include="Definitions\IRibbonItem.cs" />
+    <Compile Include="EventArgs.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Ribbon.cs" />
     <Compile Include="RibbonExtensibility.cs" />
