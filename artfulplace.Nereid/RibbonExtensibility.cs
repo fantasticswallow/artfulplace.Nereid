@@ -22,6 +22,17 @@ namespace artfulplace.Nereid
         private void AddRibbonItem(Definitions.IRibbonItem item)
         {
             RibbonItems.Add(item);
+            var t = item.GetType();
+            if (t.GetInterface("INotifyNereidPropertyChanged") != null)
+            {
+                ((INotifyNereidPropertyChanged)item).PropertyChanged += NereidControls_PropertyChanged;
+            }
+            if (t.GetProperty("IdMso") != null)
+            {
+                var pItem = (PrimitiveItemsBase)item;
+                var id = pItem.GetId();
+                ItemsDictionary.Add(id.Item2,pItem);
+            }
 
             if (item.HasCollection())
             {
@@ -33,23 +44,23 @@ namespace artfulplace.Nereid
             }
             else
             {
-                Definitions.IRibbonItem it2 = null; 
-                try
+                var prop = item.GetType().GetProperty("UiChild");
+ 
+                if (prop != null)
                 {
-                    it2 = (Definitions.IRibbonItem)item.GetType().GetProperty("UiChild").GetValue(item);
+                    AddRibbonItem((Definitions.IRibbonItem)prop.GetValue(item));
                 }
-                catch (Exception)
-                {
-                }
-                if (it2 != null)
-                {
-                    AddRibbonItem(it2);
-                }
-                
             }
         }
 
+        private void NereidControls_PropertyChanged(string id)
+        {
+            this.ribbon.InvalidateControl(id);
+        }
+
         private List<Definitions.IRibbonItem> RibbonItems { get; set; } = new List<Definitions.IRibbonItem>();
+        private Dictionary<string, PrimitiveItemsBase> ItemsDictionary { get; } = new Dictionary<string, PrimitiveItemsBase>();
+
 
         private CustomUI customUI { get; set; }
         private Office.IRibbonUI ribbon { get; set; }
@@ -68,10 +79,24 @@ namespace artfulplace.Nereid
 
         public void NereidButton_Click(Office.IRibbonControl arg)
         {
-            var args = new ButtonEventArgs(arg.Id, arg.Tag, (object)arg.Context);
+            var args = new RibbonEventArgs(arg.Id, arg.Tag, (object)arg.Context);
             var button = (Button)RibbonItems.First(x => x is Button && ((Button)x).Id == args.Id);
             button.OnClick(args);
+        }
 
+        public string NereidControl_GetLabel(Office.IRibbonControl arg)
+        {
+            return ItemsDictionary[arg.Id].GetLabel();
+        }
+
+        public bool NereidControl_GetVisible(Office.IRibbonControl arg)
+        {
+            return ItemsDictionary[arg.Id].GetVisible();
+        }
+
+        public string NereidControl_GetKeytip(Office.IRibbonControl arg)
+        {
+            return ItemsDictionary[arg.Id].GetKeytip();
         }
     }
 

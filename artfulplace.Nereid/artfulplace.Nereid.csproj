@@ -56,6 +56,8 @@
     <Compile Include="Definitions\IRibbonItem.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="INotifyNereidPropertyChanged.cs" />
+    <Compile Include="PrimitiveItemsBase.cs" />
     <Compile Include="Ribbon.cs" />
     <Compile Include="RibbonExtensibility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

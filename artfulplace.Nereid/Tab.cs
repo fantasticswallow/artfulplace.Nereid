@@ -9,12 +9,13 @@ using System.Windows.Markup;
 namespace artfulplace.Nereid
 {
     [ContentProperty("UiChild")]
-    public class Tab : DependencyObject, Definitions.IRibbonItem
+    public class Tab : PrimitiveItemsBase, Definitions.IRibbonItem
     {
         public string GetRibbonXml()
         {
             var param = new Dictionary<string, object>();
-            param.Add("idMso", IdMso);
+            var id = GetId();
+            param.Add(id.Item1, id.Item2);
             var head = XmlUtility.CreateHeadXml("tab",param);
             var foot = XmlUtility.CreateFootXml("tab");
             return head + string.Concat(UiChild.Select(x => x.GetRibbonXml()).ToArray()) + foot;
@@ -34,18 +35,6 @@ namespace artfulplace.Nereid
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UiChildProperty =
             DependencyProperty.Register("UiChild", typeof(List<Group>), typeof(Tab), new PropertyMetadata(new List<Group>()));
-
-        public string IdMso
-        {
-            get { return (string)GetValue(IdMsoProperty); }
-            set { SetValue(IdMsoProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IdMso.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IdMsoProperty =
-            DependencyProperty.Register("IdMso", typeof(string), typeof(Tab), new PropertyMetadata(""));
-
-
     }
 
 

@@ -28,17 +28,17 @@ namespace NereidTestAddin
             InitializeComponent();
         }
 
-        private void Button_Click(object arg1, ButtonEventArgs arg2)
+        private void Button_Click(object arg1, RibbonEventArgs arg2)
         {
             Debug.WriteLine("aaa");
         }
 
-        private void Button_Click_1(object arg1, ButtonEventArgs arg2)
+        private void Button_Click_1(object arg1, RibbonEventArgs arg2)
         {
-            Debug.WriteLine("bbb");
+            MainViewModel.Instance.TestButton1Label = "bcbc";
         }
 
-        private void Button_Click_2(object arg1, ButtonEventArgs arg2)
+        private void Button_Click_2(object arg1, RibbonEventArgs arg2)
         {
             Debug.WriteLine("cccc");
         }

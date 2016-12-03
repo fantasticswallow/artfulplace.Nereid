@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace artfulplace.Nereid
 {
-    public class ButtonEventArgs : EventArgs
+    public class RibbonEventArgs : EventArgs
     {
-        public ButtonEventArgs(string id, string tag, object context)
+        public RibbonEventArgs(string id, string tag, object context)
         {
             Id = id;
             Tag = tag;

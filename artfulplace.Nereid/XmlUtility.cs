@@ -29,6 +29,12 @@ namespace artfulplace.Nereid
             return $"<{elementName} {string.Join(" ", at)} />\n";
         }
 
+        public static string CreateXml(string elementName, Dictionary<string, string> attributes)
+        {
+            var at = attributes.Where(x => !string.IsNullOrEmpty(x.Value)).Select(x => $"{x.Key}=\"{x.Value}\"").ToArray();
+            return $"<{elementName} {string.Join(" ", at)} />\n";
+        }
+
         public static string CreateHeadXml(string elementName)
         {
             return $"<{elementName}>\n";

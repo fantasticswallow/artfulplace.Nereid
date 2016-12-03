@@ -1,12 +1,13 @@
 ﻿<CustomUI x:Class="NereidTestAddin.RibbonData"
              xmlns="clr-namespace:artfulplace.Nereid;assembly=artfulplace.Nereid"
+             xmlns:p="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:NereidTestAddin">
     <Ribbon>
         <Tabs>
             <Tab IdMso="TabAddIns">
                 <Group Id="MyGroup" Label="My Group">
-                    <Button Id="aaaa" Label="aaaa" Click="Button_Click" />
+                    <Button Id="aaaa" Label="{p:Binding TestButton1Label, Source={x:Static local:MainViewModel.Instance}}" Click="Button_Click"  />
                     <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
                     <Button Id="cccc" Label="cccc" Click="Button_Click_2" />
                 </Group>
