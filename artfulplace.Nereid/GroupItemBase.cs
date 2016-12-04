@@ -25,7 +25,7 @@ namespace artfulplace.Nereid
         }
 
 
-        public string GetDescription()
+        internal string GetDescription()
         {
             return Description;
         }
@@ -40,7 +40,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(GroupItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Description")));
 
-        public bool GetEnabled()
+        internal bool GetEnabled()
         {
             return Enabled;
         }
@@ -55,7 +55,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty EnabledProperty =
             DependencyProperty.Register("Enabled", typeof(bool), typeof(GroupItemBase), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "Enabled")));
 
-        public string GetScreentip()
+        internal string GetScreentip()
         {
             return Screentip;
         }
@@ -70,7 +70,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty ScreentipProperty =
             DependencyProperty.Register("Screentip", typeof(string), typeof(GroupItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Screentip")));
 
-        public string GetSupertip()
+        internal string GetSupertip()
         {
             return Supertip;
         }
@@ -104,7 +104,7 @@ namespace artfulplace.Nereid
             return dic;
         }
 
-        public string GetImageMso()
+        internal string GetImageMso()
         {
             return ImageMso;
         }
@@ -120,7 +120,7 @@ namespace artfulplace.Nereid
             DependencyProperty.Register("ImageMso", typeof(string), typeof(GroupItemBase2), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "ImageMso")));
 
 
-        public bool GetShowImage()
+        internal bool GetShowImage()
         {
             return IsShowImage;
         }
@@ -136,7 +136,7 @@ namespace artfulplace.Nereid
             DependencyProperty.Register("IsShowImage", typeof(bool), typeof(GroupItemBase2), new PropertyMetadata(false, (d, e) => DependencyPropertyChanged(d, e, "IsShowImage")));
 
 
-        public bool GetShowLabel()
+        internal bool GetShowLabel()
         {
             return IsShowLabel;
         }

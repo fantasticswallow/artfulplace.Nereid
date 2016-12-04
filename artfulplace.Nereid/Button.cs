@@ -26,7 +26,7 @@ namespace artfulplace.Nereid
             Click?.Invoke(this, e);
         }
 
-        public Office.RibbonControlSize GetSize()
+        internal Office.RibbonControlSize GetSize()
         {
             return Size == Definitions.RibbonEnum.RibbonSize.Regular ? Office.RibbonControlSize.RibbonControlSizeRegular : Office.RibbonControlSize.RibbonControlSizeLarge;
         }

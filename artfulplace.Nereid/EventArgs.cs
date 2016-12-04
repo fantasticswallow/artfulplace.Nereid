@@ -8,7 +8,7 @@ namespace artfulplace.Nereid
 {
     public class RibbonEventArgs : EventArgs
     {
-        public RibbonEventArgs(string id, string tag, object context)
+        internal RibbonEventArgs(string id, string tag, object context)
         {
             Id = id;
             Tag = tag;
@@ -23,7 +23,7 @@ namespace artfulplace.Nereid
 
     public class RibbonCheckedEventArgs : EventArgs
     {
-        public RibbonCheckedEventArgs(string id, string tag, object context, bool isChecked)
+        internal RibbonCheckedEventArgs(string id, string tag, object context, bool isChecked)
         {
             Id = id;
             Tag = tag;
@@ -40,7 +40,7 @@ namespace artfulplace.Nereid
 
     public class RibbonTextChangedEventArgs : EventArgs
     {
-        public RibbonTextChangedEventArgs(string id, string tag, object context, string text)
+        internal RibbonTextChangedEventArgs(string id, string tag, object context, string text)
         {
             Id = id;
             Tag = tag;

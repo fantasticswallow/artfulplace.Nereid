@@ -17,7 +17,7 @@ namespace artfulplace.Nereid
             return XmlUtility.CreateXml("checkBox", param);
         }
 
-        public bool GetPressed()
+        internal bool GetPressed()
         {
             return IsChecked;
         }

@@ -192,7 +192,7 @@ namespace artfulplace.Nereid
             dic.Add("getKeytip", "NereidControl_GetKeytip");
             return dic;
         }
-        public string GetKeytip()
+        internal string GetKeytip()
         {
             return Keytip;
         }
@@ -208,7 +208,7 @@ namespace artfulplace.Nereid
             DependencyProperty.Register("Keytip", typeof(string), typeof(TabItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Keytip")));
 
 
-        public string GetLabel()
+        internal string GetLabel()
         {
             return Label;
         }
@@ -223,7 +223,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register("Label", typeof(string), typeof(TabItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Label")));
 
-        public bool GetVisible()
+        internal bool GetVisible()
         {
             return Visible;
         }

@@ -28,7 +28,7 @@ namespace artfulplace.Nereid
             return false;
         }
 
-        public bool GetEnabled()
+        internal bool GetEnabled()
         {
             return Enabled;
         }
@@ -43,7 +43,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty EnabledProperty =
             DependencyProperty.Register("Enabled", typeof(bool), typeof(LabelControl), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "Enabled")));
 
-        public string GetScreentip()
+        internal string GetScreentip()
         {
             return Screentip;
         }
@@ -58,7 +58,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty ScreentipProperty =
             DependencyProperty.Register("Screentip", typeof(string), typeof(LabelControl), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Screentip")));
 
-        public string GetSupertip()
+        internal string GetSupertip()
         {
             return Supertip;
         }
@@ -73,7 +73,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty SupertipProperty =
             DependencyProperty.Register("Supertip", typeof(string), typeof(LabelControl), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Supertip")));
 
-        public string GetLabel()
+        internal string GetLabel()
         {
             return Label;
         }
@@ -88,7 +88,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register("Label", typeof(string), typeof(LabelControl), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Label")));
 
-        public bool GetVisible()
+        internal bool GetVisible()
         {
             return Visible;
         }
@@ -104,7 +104,7 @@ namespace artfulplace.Nereid
             DependencyProperty.Register("Visible", typeof(bool), typeof(LabelControl), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "Visible")));
 
 
-        public bool GetShowLabel()
+        internal bool GetShowLabel()
         {
             return IsShowLabel;
         }

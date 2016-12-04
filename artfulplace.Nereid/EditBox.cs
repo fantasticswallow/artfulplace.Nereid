@@ -48,7 +48,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty MaxStringProperty =
             DependencyProperty.Register("MaxString", typeof(int), typeof(EditBox), new PropertyMetadata(-1));
 
-        public string GetText()
+        internal string GetText()
         {
             return Text;
         }
@@ -63,7 +63,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(EditBox), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Text")));
 
-        public void OnTextChanged(RibbonTextChangedEventArgs e)
+        internal void OnTextChanged(RibbonTextChangedEventArgs e)
         {
             this.Text = e.Text;
             TextChanged?.Invoke(this, e);
