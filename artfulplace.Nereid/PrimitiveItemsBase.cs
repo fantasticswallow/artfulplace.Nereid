@@ -9,46 +9,10 @@ using System.Windows.Markup;
 
 namespace artfulplace.Nereid
 {
-    public abstract class PrimitiveItemsBase : DependencyObject, INotifyNereidPropertyChanged
+    public abstract class IdAttributesBase : DependencyObject
     {
-        internal PrimitiveItemsBase()
-        {
-        }
-
-        internal protected virtual Dictionary<string, string> CreateXmlAttributes()
-        {
-            var dic = new Dictionary<string, string>();
-            var id = GetId();
-            dic.Add(id.Item1, id.Item2);
-            dic.Add("getVisible", "NereidControl_GetVisible");
-            dic.Add("getLabel", "NereidControl_GetLabel");
-            dic.Add("getKeytip", "NereidControl_GetKeytip");
-
-            return dic;
-        }
-
-        // AG_ControlAttributes
-        // AG_IDattributes
-
-        #region enabled
-
-
-        public bool Enabled
-        {
-            get { return (bool)GetValue(EnabledProperty); }
-            set { SetValue(EnabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Enabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty EnabledProperty =
-            DependencyProperty.Register("Enabled", typeof(bool), typeof(PrimitiveItemsBase), new PropertyMetadata(true));
-
-
-
-        #endregion
-
         #region idAttributes
-        internal protected Tuple<string, string> GetId()
+        internal Tuple<string, string> GetId()
         {
             if (!string.IsNullOrEmpty(Id))
             {
@@ -102,54 +66,100 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty IdQProperty =
             DependencyProperty.Register("IdQ", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
         #endregion
+    }
 
-        public string GetKeytip()
+    /// <summary>
+    /// Ribbon Item base, has IdAttributes and PositionAttributes.
+    /// </summary>
+    public abstract class PrimitiveItemsBase : IdAttributesBase, INotifyNereidPropertyChanged
+    {
+        internal PrimitiveItemsBase()
         {
-            return Keytip;
         }
 
-        public string Keytip
+        internal protected virtual Dictionary<string, string> CreateXmlAttributes()
         {
-            get { return (string)GetValue(KeytipProperty); }
-            set { SetValue(KeytipProperty, value); }
+            var dic = new Dictionary<string, string>();
+            var id = GetId();
+            dic.Add(id.Item1, id.Item2);
+            var pos = GetPosition();
+            if (pos.Item1 != "")
+            {
+                dic.Add(pos.Item1, pos.Item2);
+            }
+            return dic;
         }
 
-        // Using a DependencyProperty as the backing store for Keytip.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty KeytipProperty =
-            DependencyProperty.Register("Keytip", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Keytip")));
+        // AG_ControlAttributes
+        // AG_IDattributes
 
-
-        public string GetLabel()
+        #region positions
+        // insertAfterMso、insertAfterQ、insertBeforeMso、insertBeforeQ
+        
+        public string InsertBeforeMso
         {
-            return Label;
+            get { return (string)GetValue(InsertBeforeMsoProperty); }
+            set { SetValue(InsertBeforeMsoProperty, value); }
         }
 
-        public string Label
+        // Using a DependencyProperty as the backing store for InsertBeforeMso.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InsertBeforeMsoProperty =
+            DependencyProperty.Register("InsertBeforeMso", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
+        
+        public string InsertBeforeQ
         {
-            get { return (string)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
+            get { return (string)GetValue(InsertBeforeQProperty); }
+            set { SetValue(InsertBeforeQProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Label")));
-
-        public bool GetVisible()
+        // Using a DependencyProperty as the backing store for InsertBeforeQ.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InsertBeforeQProperty =
+            DependencyProperty.Register("InsertBeforeQ", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
+        
+        public string InsertAfterMso
         {
-            return Visible;
+            get { return (string)GetValue(InsertAfterMsoProperty); }
+            set { SetValue(InsertAfterMsoProperty, value); }
         }
 
-        public bool Visible
+        // Using a DependencyProperty as the backing store for InsertAfterMso.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InsertAfterMsoProperty =
+            DependencyProperty.Register("InsertAfterMso", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
+        
+        public string InsertAfterQ
         {
-            get { return (bool)GetValue(VisibleProperty); }
-            set { SetValue(VisibleProperty, value); }
+            get { return (string)GetValue(InsertAfterQProperty); }
+            set { SetValue(InsertAfterQProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Visible.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty VisibleProperty =
-            DependencyProperty.Register("Visible", typeof(bool), typeof(PrimitiveItemsBase), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "Visible")));
+        // Using a DependencyProperty as the backing store for InsertAfterQ.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InsertAfterQProperty =
+            DependencyProperty.Register("InsertAfterQ", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
 
+        internal Tuple<string, string> GetPosition()
+        {
+            if (!string.IsNullOrEmpty(InsertBeforeMso))
+            {
+                return Tuple.Create("insertBeforeMso", InsertBeforeMso);
+            }
+            else if (!string.IsNullOrEmpty(InsertBeforeQ))
+            {
+                return Tuple.Create("insertBeforeQ", InsertBeforeQ);
+            }
+            else if (!string.IsNullOrEmpty(InsertAfterMso))
+            {
+                return Tuple.Create("insertAfterMso", InsertAfterMso);
+            }
+            else if (!string.IsNullOrEmpty(InsertAfterQ))
+            {
+                return Tuple.Create("insertAfterQ", InsertAfterQ);
+            }
+            return Tuple.Create("", "");
+        }
 
+        #endregion
+        
+        
 
         #region INotifyNereidPropertyChanged
         protected void notifyChanged()
@@ -168,6 +178,66 @@ namespace artfulplace.Nereid
             obj.notifyChanged();
         }
         #endregion
+
+    }
+
+    public abstract class TabItemBase : PrimitiveItemsBase
+    {
+
+        protected internal override Dictionary<string, string> CreateXmlAttributes()
+        {
+            var dic = base.CreateXmlAttributes();
+            dic.Add("getVisible", "NereidControl_GetVisible");
+            dic.Add("getLabel", "NereidControl_GetLabel");
+            dic.Add("getKeytip", "NereidControl_GetKeytip");
+            return dic;
+        }
+        public string GetKeytip()
+        {
+            return Keytip;
+        }
+
+        public string Keytip
+        {
+            get { return (string)GetValue(KeytipProperty); }
+            set { SetValue(KeytipProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Keytip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty KeytipProperty =
+            DependencyProperty.Register("Keytip", typeof(string), typeof(TabItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Keytip")));
+
+
+        public string GetLabel()
+        {
+            return Label;
+        }
+
+        public string Label
+        {
+            get { return (string)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register("Label", typeof(string), typeof(TabItemBase), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Label")));
+
+        public bool GetVisible()
+        {
+            return Visible;
+        }
+
+        public bool Visible
+        {
+            get { return (bool)GetValue(VisibleProperty); }
+            set { SetValue(VisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Visible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty VisibleProperty =
+            DependencyProperty.Register("Visible", typeof(bool), typeof(TabItemBase), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "Visible")));
+
 
     }
 }

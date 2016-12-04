@@ -20,4 +20,38 @@ namespace artfulplace.Nereid
         public string Tag { get; private set; }
 
     }
+
+    public class RibbonCheckedEventArgs : EventArgs
+    {
+        public RibbonCheckedEventArgs(string id, string tag, object context, bool isChecked)
+        {
+            Id = id;
+            Tag = tag;
+            Context = context;
+            IsChecked = isChecked;
+        }
+
+        public object Context { get; private set; }
+        public string Id { get; private set; }
+        public string Tag { get; private set; }
+        public bool IsChecked { get; private set; }
+
+    }
+
+    public class RibbonTextChangedEventArgs : EventArgs
+    {
+        public RibbonTextChangedEventArgs(string id, string tag, object context, string text)
+        {
+            Id = id;
+            Tag = tag;
+            Context = context;
+            Text = text;
+        }
+
+        public object Context { get; private set; }
+        public string Id { get; private set; }
+        public string Tag { get; private set; }
+        public string Text { get; private set; }
+
+    }
 }

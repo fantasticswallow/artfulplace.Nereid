@@ -70,6 +70,11 @@ namespace NereidTestAddin
             Debug.WriteLine("ccc");
         }
 
+        public string aaaa_GetLabel(Office.IRibbonControl arg)
+        {
+            return "test";
+        }
+
         #endregion
 
         #region ヘルパー
