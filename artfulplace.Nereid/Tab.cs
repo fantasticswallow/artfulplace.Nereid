@@ -9,7 +9,7 @@ using System.Windows.Markup;
 namespace artfulplace.Nereid
 {
     [ContentProperty("UiChild")]
-    public class Tab : PrimitiveItemsBase, Definitions.IRibbonItem
+    public class Tab : TabItemBase, Definitions.IRibbonItem
     {
         public string GetRibbonXml()
         {

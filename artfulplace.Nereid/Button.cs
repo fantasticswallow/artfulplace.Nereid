@@ -9,7 +9,7 @@ using Office = Microsoft.Office.Core;
 
 namespace artfulplace.Nereid
 {
-    public class Button : GroupItemBase2, Definitions.IGroupChild
+    public class Button : GroupItemBase3, Definitions.IButtonBase, Definitions.IDropDownChid
     {
         public string GetRibbonXml()
         {

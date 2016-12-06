@@ -32,7 +32,11 @@ namespace artfulplace.Nereid
             {
                 var pItem = (PrimitiveItemsBase)item;
                 var id = pItem.GetId();
-                ItemsDictionary.Add(id.Item2, pItem);
+                if (!ItemsDictionary.ContainsKey(id.Item2))
+                {
+                    ItemsDictionary.Add(id.Item2, pItem);
+                }
+                
             }
 
             if (item.HasCollection())
@@ -96,6 +100,13 @@ namespace artfulplace.Nereid
             checkBox.OnClick(args);
         }
 
+        public void NereidComboBox_Changed(Office.IRibbonControl arg, string text)
+        {
+            var args = new RibbonTextChangedEventArgs(arg.Id, arg.Tag, (object)arg.Context, text);
+            var comboBox = (ComboBox)ItemsDictionary[arg.Id];
+            comboBox.OnTextChanged(args);
+        }
+
         public void NereidEditBox_Changed(Office.IRibbonControl arg, string text)
         {
             var args = new RibbonTextChangedEventArgs(arg.Id, arg.Tag, (object)arg.Context, text);
@@ -135,17 +146,12 @@ namespace artfulplace.Nereid
 
         public string NereidControl_GetDescription(Office.IRibbonControl arg)
         {
-            return ((GroupItemBase)ItemsDictionary[arg.Id]).GetDescription();
+            return ((GroupItemBase2)ItemsDictionary[arg.Id]).GetDescription();
         }
 
         public bool NereidControl_GetEnabled(Office.IRibbonControl arg)
         {
             return ((GroupItemBase)ItemsDictionary[arg.Id]).GetEnabled();
-        }
-
-        public string NereidControl_GetImageMso(Office.IRibbonControl arg)
-        {
-            return ((GroupItemBase2)ItemsDictionary[arg.Id]).GetImageMso();
         }
 
         public string NereidControl_GetScreentip(Office.IRibbonControl arg)
@@ -158,15 +164,22 @@ namespace artfulplace.Nereid
             return ((GroupItemBase)ItemsDictionary[arg.Id]).GetSupertip();
         }
 
+        //public string NereidControl_GetImageMso(Office.IRibbonControl arg)
+        //{
+        //    return ((GroupItemBase3)ItemsDictionary[arg.Id]).GetImageMso();
+        //}
+
         public bool NereidControl_GetShowImage(Office.IRibbonControl arg)
         {
-            return ((GroupItemBase2)ItemsDictionary[arg.Id]).GetShowImage();
+            return ((GroupItemBase3)ItemsDictionary[arg.Id]).GetShowImage();
         }
 
         public bool NereidControl_GetShowLabel(Office.IRibbonControl arg)
         {
-            return ((GroupItemBase2)ItemsDictionary[arg.Id]).GetShowLabel();
+            return ((GroupItemBase3)ItemsDictionary[arg.Id]).GetShowLabel();
         }
+
+
         #endregion
 
         #region button
@@ -180,6 +193,55 @@ namespace artfulplace.Nereid
         public bool NereidCheckBox_GetPressed(Office.IRibbonControl arg)
         {
             return ((CheckBox)ItemsDictionary[arg.Id]).GetPressed();
+        }
+        #endregion
+
+        #region comboBox
+        public string NereidComboBox_GetImageMso(Office.IRibbonControl arg)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetImageMso();
+        }
+
+        public bool NereidComboBox_GetShowImage(Office.IRibbonControl arg)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetShowImage();
+        }
+
+        public bool NereidComboBox_GetShowLabel(Office.IRibbonControl arg)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetShowLabel();
+        }
+
+        public string NereidComboBox_GetText(Office.IRibbonControl arg)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetText();
+        }
+
+        // getItemCount, getItemID, getItemImage, getItemLabel, getItemScreentip, getItemSupertip
+
+        public int NereidComboBox_GetItemCount(Office.IRibbonControl arg)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetItemCount();
+        }
+
+        public string NereidComboBox_GetItemID(Office.IRibbonControl arg, int index)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetItemId(index);
+        }
+
+        public string NereidComboBox_GetItemLabel(Office.IRibbonControl arg, int index)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetItemLabel(index);
+        }
+
+        public string NereidComboBox_GetItemScreentip(Office.IRibbonControl arg, int index)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetItemScreentip(index);
+        }
+
+        public string NereidComboBox_GetItemSupertip(Office.IRibbonControl arg, int index)
+        {
+            return ((ComboBox)ItemsDictionary[arg.Id]).GetItemSupertip(index);
         }
         #endregion
 

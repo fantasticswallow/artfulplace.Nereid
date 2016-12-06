@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace artfulplace.Nereid
 {
-    public class CheckBox : GroupItemBase, Definitions.IGroupChild
+    public class CheckBox : GroupItemBase2, Definitions.IGroupChild
     {
         public string GetRibbonXml()
         {

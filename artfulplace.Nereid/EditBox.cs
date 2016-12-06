@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace artfulplace.Nereid
 {
-    public class EditBox : GroupItemBase2, Definitions.IGroupChild
+    public class EditBox : GroupItemBase3, Definitions.IGroupChild
     {
         // getImage, getImageMso, getShowImage, getShowLabel, image, imageMso, showImage, showLabel
         public string GetRibbonXml()
@@ -60,8 +60,13 @@ namespace artfulplace.Nereid
         }
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty TextProperty =
+        //    DependencyProperty.Register("Text", typeof(string), typeof(EditBox), new FrameworkPropertyMetadata("", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,(d, e) => DependencyPropertyChanged(d, e, "Text")));
+
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(EditBox), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "Text")));
+
+        // new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault)
 
         internal void OnTextChanged(RibbonTextChangedEventArgs e)
         {

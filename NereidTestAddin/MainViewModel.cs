@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -23,6 +24,19 @@ namespace NereidTestAddin
             set
             {
                 _testButton1Label = value;
+                notifyChanged();
+            }
+        }
+
+        public ObservableCollection<string> ComboBoxItems { get; } = new ObservableCollection<string>();
+
+        private string _editBoxText = "";
+        public string EditBoxText
+        {
+            get { return _editBoxText; }
+            set
+            {
+                _editBoxText = value;
                 notifyChanged();
             }
         }

@@ -11,6 +11,12 @@ namespace artfulplace.Nereid
     [ContentProperty("UiChild")]
     public class Group : DependencyObject, Definitions.IRibbonItem
     {
+
+        public Group()
+        {
+            SetValue(UiChildPropertyKey, new List<Definitions.IGroupChild>());
+
+        }
         public string GetRibbonXml()
         {
             var param = new Dictionary<string, object>();
@@ -18,13 +24,24 @@ namespace artfulplace.Nereid
             param.Add("label", Label);
             var head = XmlUtility.CreateHeadXml("group", param);
             var foot = XmlUtility.CreateFootXml("group");
-            return head + string.Concat(UiChild.Select(x => x.GetRibbonXml()).ToArray()) + foot;
+            if (UiChild.Any(x => x is DialogBoxLauncher))
+            {
+                // DialogBoxLauncher element must be final in group.
+
+                var dBoxLauncher = UiChild.First(x => x is DialogBoxLauncher);
+                return head + string.Concat(UiChild.Where(x => !(x is DialogBoxLauncher)).Select(x => x.GetRibbonXml()).ToArray()) + dBoxLauncher.GetRibbonXml() + foot;
+            }
+            else
+            {
+                return head + string.Concat(UiChild.Select(x => x.GetRibbonXml()).ToArray()) + foot;
+            }
+            
         }
 
         public List<Definitions.IGroupChild> UiChild
         {
             get { return (List<Definitions.IGroupChild>)GetValue(UiChildProperty); }
-            set { SetValue(UiChildProperty, value); }
+            private set { SetValue(UiChildPropertyKey, value); }
         }
 
         public bool HasCollection()
@@ -32,11 +49,14 @@ namespace artfulplace.Nereid
             return true;
         }
 
+        private static readonly DependencyPropertyKey UiChildPropertyKey =
+            DependencyProperty.RegisterReadOnly("UiChild", typeof(List<Definitions.IGroupChild>), typeof(Group), new PropertyMetadata(new List<Definitions.IGroupChild>()));
+
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UiChildProperty =
-            DependencyProperty.Register("UiChild", typeof(List<Definitions.IGroupChild>), typeof(Group), new PropertyMetadata(new List<Definitions.IGroupChild>()));
+            UiChildPropertyKey.DependencyProperty;
 
-
+        
 
         public string Id
         {

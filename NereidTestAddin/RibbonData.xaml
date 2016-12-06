@@ -9,7 +9,10 @@
                 <Group Id="MyGroup" Label="My Group">
                     <Button Id="aaaa" Label="{p:Binding TestButton1Label, Source={x:Static local:MainViewModel.Instance}}" Click="Button_Click"  />
                     <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
-                    <Button Id="cccc" Label="cccc" Click="Button_Click_2" />
+                    <EditBox Id="cEditBox" Label="test" Text="{p:Binding EditBoxText, Mode=TwoWay, Source={x:Static local:MainViewModel.Instance}}" />
+                </Group>
+                <Group Id="MyGroup2" Label="Test2">
+                    <ComboBox ItemsSource="{p:Binding ComboBoxItems, Source={x:Static local:MainViewModel.Instance}}" Id="cccc" />
                 </Group>
             </Tab>
         </Tabs>

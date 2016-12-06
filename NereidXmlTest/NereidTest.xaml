@@ -1,14 +1,19 @@
 ﻿<CustomUI x:Class="NereidXmlTest.NereidTest"
              xmlns="clr-namespace:artfulplace.Nereid;assembly=artfulplace.Nereid"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:p="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:local="clr-namespace:NereidXmlTest">
     <Ribbon>
         <Tabs>
             <Tab IdMso="TabAddIns">
                 <Group Id="MyGroup" Label="My Group">
-                    <Button x:Name="aButton" Id="aaaa" Label="aaaa" Click="Button_Click" />
+                    <Button Id="aaaa" Label="{p:Binding x}" Click="Button_Click" />
                     <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
                     <Button Id="cccc" Label="cccc" Click="Button_Click_2" />
+                    
+                </Group>
+                <Group Id="MyGroup2" Label="Test2">
+                    <ComboBox  Id="c2" />
                 </Group>
             </Tab>
         </Tabs>

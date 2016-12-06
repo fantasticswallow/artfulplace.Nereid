@@ -8,7 +8,7 @@ using Office = Microsoft.Office.Core;
 
 namespace artfulplace.Nereid
 {
-    public class ToggleButton : GroupItemBase2, Definitions.IGroupChild
+    public class ToggleButton : GroupItemBase3, Definitions.IButtonBase
     {
         public string GetRibbonXml()
         {

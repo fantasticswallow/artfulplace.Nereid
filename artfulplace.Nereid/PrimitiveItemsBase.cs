@@ -162,7 +162,7 @@ namespace artfulplace.Nereid
         
 
         #region INotifyNereidPropertyChanged
-        protected void notifyChanged()
+        internal protected void NotifyChanged()
         {
             var id = GetId();
             PropertyChanged?.Invoke(id.Item2);
@@ -175,7 +175,7 @@ namespace artfulplace.Nereid
         {
             var obj = (PrimitiveItemsBase)d;
             d.GetType().GetProperty(propertyName).SetValue(d, e.NewValue);
-            obj.notifyChanged();
+            obj.NotifyChanged();
         }
         #endregion
 

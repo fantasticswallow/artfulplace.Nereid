@@ -30,7 +30,7 @@ namespace NereidTestAddin
 
         private void Button_Click(object arg1, RibbonEventArgs arg2)
         {
-            Debug.WriteLine("aaa");
+            MainViewModel.Instance.ComboBoxItems.Add(MainViewModel.Instance.EditBoxText);
         }
 
         private void Button_Click_1(object arg1, RibbonEventArgs arg2)
