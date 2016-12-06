@@ -14,7 +14,10 @@ namespace artfulplace.Nereid
     {
         //  getImage, getImageMso, getShowImage, getShowLabel,
         // getText, maxLength, onChange, sizeString
-
+        public ComboBox()
+        {
+            SetValue(UiChildPropertyKey, new List<Item>());
+        }
 
         public string GetRibbonXml()
         {
@@ -333,12 +336,17 @@ namespace artfulplace.Nereid
         public List<Item> UiChild
         {
             get { return (List<Item>)GetValue(UiChildProperty); }
-            set { SetValue(UiChildProperty, value); }
+            private set { SetValue(UiChildPropertyKey, value); }
         }
 
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty UiChildProperty =
-            DependencyProperty.Register("UiChild", typeof(List<Item>), typeof(ComboBox), new PropertyMetadata(new List<Item>()));
+        private static readonly DependencyPropertyKey UiChildPropertyKey =
+            DependencyProperty.RegisterReadOnly("UiChild", typeof(List<Item>), typeof(ComboBox), new PropertyMetadata(new List<Item>()));
+
+        public static readonly DependencyProperty UiChildProperty = UiChildPropertyKey.DependencyProperty;
+
+
+
 
     }
 }
