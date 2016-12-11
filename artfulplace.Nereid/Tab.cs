@@ -31,24 +31,27 @@ namespace artfulplace.Nereid
             return true;
         }
 
+                
         public List<Group> UiChild
         {
             get { return (List<Group>)GetValue(UiChildProperty); }
             private set { SetValue(UiChildPropertyKey, value); }
         }
 
+        private static readonly DependencyPropertyKey UiChildPropertyKey =
+            DependencyProperty.RegisterReadOnly("UiChild", typeof(List<Group>), typeof(Tab), new PropertyMetadata(new List<Group>()));
+
         public static readonly DependencyProperty UiChildProperty = UiChildPropertyKey.DependencyProperty;
 
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
-        private static readonly DependencyPropertyKey UiChildPropertyKey =
-            DependencyProperty.RegisterReadOnly("UiChild", typeof(List<Group>), typeof(Tab), new PropertyMetadata(new List<Group>()));
+        
     }
 
 
 
 
     [ContentProperty("UiChild")]
-    public class Tabs : DependencyObject, Definitions.IRibbonChild
+    public class Tabs : DataContextBase, Definitions.IRibbonChild
     {
         public Tabs()
         {
@@ -67,7 +70,7 @@ namespace artfulplace.Nereid
             return true;
         }
 
-
+        
         public List<Tab> UiChild
         {
             get { return (List<Tab>)GetValue(UiChildProperty); }

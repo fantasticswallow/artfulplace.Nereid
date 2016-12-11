@@ -76,7 +76,7 @@ namespace artfulplace.Nereid
         protected internal override Dictionary<string, string> CreateXmlAttributes()
         {
             var dic = base.CreateXmlAttributes();
-            // dic.Add("getDescription", "NereidControl_GetDescription");
+            dic.Add("getDescription", "NereidControl_GetDescription");
             return dic;
         }
 
@@ -98,7 +98,7 @@ namespace artfulplace.Nereid
     }
 
     /// <summary>
-    /// Ribbon item base for button, comboBox, editBox, etc...
+    /// Ribbon item base for button, editBox, etc...
     /// </summary>
     public abstract class GroupItemBase3 : GroupItemBase2
     {
@@ -158,6 +158,70 @@ namespace artfulplace.Nereid
         // Using a DependencyProperty as the backing store for IsShowLabel.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsShowLabelProperty =
             DependencyProperty.Register("IsShowLabel", typeof(bool), typeof(GroupItemBase3), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "IsShowLabel")));
+
+    }
+
+    /// <summary>
+    /// Ribbon item base for comboBox, dropDown
+    /// </summary>
+    public abstract class GroupItemBase4 : GroupItemBase
+    {
+        protected internal override Dictionary<string, string> CreateXmlAttributes()
+        {
+            var dic = base.CreateXmlAttributes();
+            // dic.Add("getImageMso", "NereidControl_GetImageMso");
+            dic.Add("getShowImage", "NereidControl2_GetShowImage");
+            dic.Add("getShowLabel", "NereidControl2_GetShowLabel");
+            // dic.Add("getImage", "NereidControl_GetImage");
+            return dic;
+        }
+
+        //internal string GetImageMso()
+        //{
+        //    return ImageMso;
+        //}
+
+        //public string ImageMso
+        //{
+        //    get { return (string)GetValue(ImageMsoProperty); }
+        //    set { SetValue(ImageMsoProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for ImageMso.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ImageMsoProperty =
+        //    DependencyProperty.Register("ImageMso", typeof(string), typeof(GroupItemBase3), new PropertyMetadata("", (d, e) => DependencyPropertyChanged(d, e, "ImageMso")));
+
+
+        internal bool GetShowImage()
+        {
+            return IsShowImage;
+        }
+
+        public bool IsShowImage
+        {
+            get { return (bool)GetValue(IsShowImageProperty); }
+            set { SetValue(IsShowImageProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShowImage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShowImageProperty =
+            DependencyProperty.Register("IsShowImage", typeof(bool), typeof(GroupItemBase4), new PropertyMetadata(false, (d, e) => DependencyPropertyChanged(d, e, "IsShowImage")));
+
+
+        internal bool GetShowLabel()
+        {
+            return IsShowLabel;
+        }
+
+        public bool IsShowLabel
+        {
+            get { return (bool)GetValue(IsShowLabelProperty); }
+            set { SetValue(IsShowLabelProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsShowLabel.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsShowLabelProperty =
+            DependencyProperty.Register("IsShowLabel", typeof(bool), typeof(GroupItemBase4), new PropertyMetadata(true, (d, e) => DependencyPropertyChanged(d, e, "IsShowLabel")));
 
     }
 }

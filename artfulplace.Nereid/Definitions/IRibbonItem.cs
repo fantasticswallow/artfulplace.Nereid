@@ -14,5 +14,6 @@ namespace artfulplace.Nereid.Definitions
         /// </summary>
         /// <returns></returns>
         bool HasCollection();
+        object DataContext { get; set; }
     }
 }

@@ -31,6 +31,15 @@ namespace artfulplace.Nereid
             return true;
         }
 
+        public object DataContext
+        {
+            get { return (object)GetValue(DataContextProperty); }
+            set { SetValue(DataContextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DataContext.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DataContextProperty =
+            DependencyProperty.Register("DataContext", typeof(object), typeof(Command), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits, (d, e) => ((Commands)d).DataContext = e.NewValue));
 
 
     }
@@ -58,5 +67,14 @@ namespace artfulplace.Nereid
         {
             return false;
         }
+        public object DataContext
+        {
+            get { return (object)GetValue(DataContextProperty); }
+            set { SetValue(DataContextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DataContext.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DataContextProperty =
+            DependencyProperty.Register("DataContext", typeof(object), typeof(Command), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits, (d, e) => ((Command)d).DataContext = e.NewValue));
     }
 }

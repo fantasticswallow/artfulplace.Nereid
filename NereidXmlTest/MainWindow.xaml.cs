@@ -26,8 +26,11 @@ namespace NereidXmlTest
             InitializeComponent();
             var obj = new NereidTest();
             var ext = new artfulplace.Nereid.RibbonExtensibility(obj);
-            textBox.Text = ext.GetCustomUI("");
-            
+            textBox.DataContext = ext.GetCustomUI("");
+            // var binds = BindingOperations.GetSourceUpdatingBindings(textBox);
+            var localEnumerator = textBox.GetLocalValueEnumerator();
+            var bind = BindingOperations.GetBinding(textBox, TextBox.TextProperty);
+
         }
     }
 }

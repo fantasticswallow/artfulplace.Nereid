@@ -9,7 +9,7 @@ using System.Windows.Markup;
 namespace artfulplace.Nereid
 {
     [ContentProperty("UiChild")]
-    public class Group : DependencyObject, Definitions.IRibbonItem
+    public class Group : PrimitiveItemsBase, Definitions.IRibbonItem
     {
 
         public Group()
@@ -58,17 +58,7 @@ namespace artfulplace.Nereid
 
         
 
-        public string Id
-        {
-            get { return (string)GetValue(IdProperty); }
-            set { SetValue(IdProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IdProperty =
-            DependencyProperty.Register("Id", typeof(string), typeof(Group), new PropertyMetadata(""));
-
-
+       
 
         public string Label
         {

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace artfulplace.Nereid
 {
-    public class Item : DependencyObject, Definitions.IRibbonItem
+    public class Item : DataContextBase, Definitions.IRibbonItem
     {
         // id, image, imageMso, label, screentip, supertip
         // Item has static properties.

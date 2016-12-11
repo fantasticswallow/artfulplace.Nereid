@@ -107,6 +107,13 @@ namespace artfulplace.Nereid
             comboBox.OnTextChanged(args);
         }
 
+        public void NereidDropDown_Changed(Office.IRibbonControl arg, string selectedId, int selectedIndex)
+        {
+            var args = new RibbonSelectionChangedEventArgs(arg.Id, arg.Tag, (object)arg.Context, selectedId, selectedIndex);
+            var dropDown = (DropDown)ItemsDictionary[arg.Id];
+            dropDown.OnSelectionChanged(args);
+        }
+
         public void NereidEditBox_Changed(Office.IRibbonControl arg, string text)
         {
             var args = new RibbonTextChangedEventArgs(arg.Id, arg.Tag, (object)arg.Context, text);
@@ -179,6 +186,15 @@ namespace artfulplace.Nereid
             return ((GroupItemBase3)ItemsDictionary[arg.Id]).GetShowLabel();
         }
 
+        public bool NereidControl2_GetShowImage(Office.IRibbonControl arg)
+        {
+            return ((GroupItemBase4)ItemsDictionary[arg.Id]).GetShowImage();
+        }
+
+        public bool NereidControl2_GetShowLabel(Office.IRibbonControl arg)
+        {
+            return ((GroupItemBase4)ItemsDictionary[arg.Id]).GetShowLabel();
+        }
 
         #endregion
 
@@ -245,6 +261,45 @@ namespace artfulplace.Nereid
         }
         #endregion
 
+        #region dropDown
+        public int NereidDropDown_GetItemCount(Office.IRibbonControl arg)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetItemCount();
+        }
+
+        public string NereidDropDown_GetItemID(Office.IRibbonControl arg, int index)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetItemId(index);
+        }
+
+        public string NereidDropDown_GetItemLabel(Office.IRibbonControl arg, int index)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetItemLabel(index);
+        }
+
+        public string NereidDropDown_GetItemScreentip(Office.IRibbonControl arg, int index)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetItemScreentip(index);
+        }
+
+        public string NereidDropDown_GetItemSupertip(Office.IRibbonControl arg, int index)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetItemSupertip(index);
+        }
+
+        // getSelectedItemID, getSelectedItemIndex
+
+        public string NereidDropDown_GetSelectedItemId(Office.IRibbonControl arg)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetSelectedId();
+        }
+
+        public int NereidDropDown_GetSelectedItemIndex(Office.IRibbonControl arg)
+        {
+            return ((DropDown)ItemsDictionary[arg.Id]).GetSelectedIndex();
+        }
+        #endregion
+
         #region editBox
         public string NereidEditBox_GetText(Office.IRibbonControl arg)
         {
@@ -282,6 +337,15 @@ namespace artfulplace.Nereid
         public bool NereidLabel_GetShowLabel(Office.IRibbonControl arg)
         {
             return ((LabelControl)ItemsDictionary[arg.Id]).GetShowLabel();
+        }
+        #endregion
+
+
+        #region separator
+        public bool NereidSeparator_GetVisible(Office.IRibbonControl arg)
+        {
+            var con = RibbonItems.First(x => x is Separator && ((Separator)x).GetId().Item2 == arg.Id);
+            return ((Separator)con).GetVisible();
         }
         #endregion
 

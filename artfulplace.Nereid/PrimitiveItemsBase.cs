@@ -11,6 +11,39 @@ namespace artfulplace.Nereid
 {
     public abstract class IdAttributesBase : DependencyObject
     {
+        
+    }
+
+    public abstract class DataContextBase : DependencyObject
+    {
+        public object DataContext
+        {
+            get { return (object)GetValue(DataContextProperty); }
+            set { SetValue(DataContextProperty, value); }
+        }
+
+        private void SetDataContextValue(object newValue)
+        {
+            // SetValue(DataContextProperty, newValue);
+            var item = (Definitions.IRibbonItem)this;
+            item.SetDataContext(newValue);
+        }
+
+        // Using a DependencyProperty as the backing store for DataContext.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DataContextProperty =
+            DependencyProperty.Register("DataContext", typeof(object), typeof(DataContextBase), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits, (d, e) => ((DataContextBase)d).SetDataContextValue(e.NewValue)));
+
+    }
+
+    /// <summary>
+    /// Ribbon Item base, has IdAttributes and PositionAttributes.
+    /// </summary>
+    public abstract class PrimitiveItemsBase : DataContextBase, INotifyNereidPropertyChanged
+    {
+        internal PrimitiveItemsBase()
+        {
+        }
+
         #region idAttributes
         internal Tuple<string, string> GetId()
         {
@@ -66,17 +99,7 @@ namespace artfulplace.Nereid
         public static readonly DependencyProperty IdQProperty =
             DependencyProperty.Register("IdQ", typeof(string), typeof(PrimitiveItemsBase), new PropertyMetadata(""));
         #endregion
-    }
-
-    /// <summary>
-    /// Ribbon Item base, has IdAttributes and PositionAttributes.
-    /// </summary>
-    public abstract class PrimitiveItemsBase : IdAttributesBase, INotifyNereidPropertyChanged
-    {
-        internal PrimitiveItemsBase()
-        {
-        }
-
+        
         internal protected virtual Dictionary<string, string> CreateXmlAttributes()
         {
             var dic = new Dictionary<string, string>();

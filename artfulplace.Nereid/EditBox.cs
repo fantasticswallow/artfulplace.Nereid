@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace artfulplace.Nereid
 {
-    public class EditBox : GroupItemBase3, Definitions.IGroupChild
+    public class EditBox : GroupItemBase4, Definitions.IGroupChild
     {
         // getImage, getImageMso, getShowImage, getShowLabel, image, imageMso, showImage, showLabel
         public string GetRibbonXml()
@@ -24,6 +24,7 @@ namespace artfulplace.Nereid
                 param.Add("sizeString", SizeString);
             }
             return XmlUtility.CreateXml("editBox", param);
+            
         }
 
 

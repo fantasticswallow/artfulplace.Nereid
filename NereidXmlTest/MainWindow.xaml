@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NereidTest" Height="350" Width="525">
     <Grid>
-        <TextBox x:Name="textBox" Margin="10,10,10.4,9.8" TextWrapping="Wrap" Text=""/>
+        <TextBox x:Name="textBox" Margin="10,10,10.4,9.8" TextWrapping="Wrap" Text="{Binding Mode=OneWay}"/>
 
     </Grid>
 </Window>

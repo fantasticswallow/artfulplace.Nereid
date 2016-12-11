@@ -7,12 +7,13 @@
         <Tabs>
             <Tab IdMso="TabAddIns">
                 <Group Id="MyGroup" Label="My Group">
-                    <Button Id="aaaa" Label="{p:Binding TestButton1Label, Source={x:Static local:MainViewModel.Instance}}" Click="Button_Click"  />
-                    <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
-                    <EditBox Id="cEditBox" Label="test" Text="{p:Binding EditBoxText, Mode=TwoWay, Source={x:Static local:MainViewModel.Instance}}" />
+                    <Button Id="aaaa" Label="{Binding TestButton1Label}" Click="Button_Click"  />
+                    <ToggleButton Id="bbbb" Label="bbbb" Click="Button_Click_1" />
+                    <EditBox Id="cEditBox" Label="test" Text="{Binding EditBoxText, Mode=TwoWay}" />
+                    <Separator Id="sp" />
                 </Group>
                 <Group Id="MyGroup2" Label="Test2">
-                    <ComboBox ItemsSource="{p:Binding ComboBoxItems, Source={x:Static local:MainViewModel.Instance}}" Id="cccc" />
+                    <DropDown ItemsSource="{Binding ComboBoxItems}" Id="cccc" />
                 </Group>
             </Tab>
         </Tabs>

@@ -9,7 +9,7 @@ using System.Windows;
 namespace artfulplace.Nereid
 {
     [ContentProperty("UiChild")]
-    public class DialogBoxLauncher : DependencyObject, Definitions.IGroupChild
+    public class DialogBoxLauncher : DataContextBase, Definitions.IGroupChild
     {
         public string GetRibbonXml()
         {
@@ -26,8 +26,6 @@ namespace artfulplace.Nereid
         {
             return false;
         }
-
-
 
         public Button UiChild
         {

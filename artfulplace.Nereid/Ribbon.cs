@@ -9,7 +9,7 @@ using System.Windows.Markup;
 namespace artfulplace.Nereid
 {
     [ContentProperty("UiChild")]
-    public class Ribbon : DependencyObject, Definitions.IRibbonStricts
+    public class Ribbon : DataContextBase, Definitions.IRibbonStricts
     {
         public string GetRibbonXml()
         {
@@ -37,9 +37,6 @@ namespace artfulplace.Nereid
         // Using a DependencyProperty as the backing store for UiChild.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UiChildProperty =
             DependencyProperty.Register("UiChild", typeof(Definitions.IRibbonChild), typeof(Ribbon), new PropertyMetadata(null));
-
-
-
 
         public bool StartFromScratch
         {

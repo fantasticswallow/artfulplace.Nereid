@@ -5,10 +5,10 @@
              xmlns:local="clr-namespace:NereidXmlTest">
     <Ribbon>
         <Tabs>
-            <Tab IdMso="TabAddIns">
+            <Tab x:Name="tabTest" Id="{Binding Item1}">
                 <Group Id="MyGroup" Label="My Group">
-                    <Button Id="aaaa" Label="{p:Binding x}" Click="Button_Click" />
-                    <Button Id="bbbb" Label="bbbb" Click="Button_Click_1" />
+                    <Button Id="aaaa" Click="Button_Click" />
+                    <Button Id="bbbb" Label="{Binding Item2}" Click="Button_Click_1" />
                     <Button Id="cccc" Label="cccc" Click="Button_Click_2" />
                     
                 </Group>

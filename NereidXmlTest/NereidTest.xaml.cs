@@ -25,7 +25,7 @@ namespace NereidXmlTest
         public NereidTest()
         {
             InitializeComponent();
-            
+            this.DataContext = Tuple.Create("hjkl", "xyz");
         }
 
         private void Button_Click(object arg1, RibbonEventArgs arg2)

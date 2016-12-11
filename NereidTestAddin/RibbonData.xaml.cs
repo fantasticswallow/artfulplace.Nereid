@@ -26,6 +26,7 @@ namespace NereidTestAddin
         public RibbonData()
         {
             InitializeComponent();
+            this.DataContext = MainViewModel.Instance;
         }
 
         private void Button_Click(object arg1, RibbonEventArgs arg2)
@@ -33,7 +34,7 @@ namespace NereidTestAddin
             MainViewModel.Instance.ComboBoxItems.Add(MainViewModel.Instance.EditBoxText);
         }
 
-        private void Button_Click_1(object arg1, RibbonEventArgs arg2)
+        private void Button_Click_1(object arg1, RibbonCheckedEventArgs arg2)
         {
             MainViewModel.Instance.TestButton1Label = "bcbc";
         }
