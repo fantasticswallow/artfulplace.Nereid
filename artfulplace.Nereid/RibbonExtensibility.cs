@@ -349,6 +349,14 @@ namespace artfulplace.Nereid
         }
         #endregion
 
+        #region tabSet
+        public bool NereidTabSet_GetVisible(Office.IRibbonControl arg)
+        {
+            var con = RibbonItems.First(x => x is TabSet && ((TabSet)x).IdMso == arg.Id);
+            return ((TabSet)con).GetVisible();
+        }
+        #endregion
+
         #region ToggleButton
         public bool NereidToggleButton_GetPressed(Office.IRibbonControl arg)
         {
