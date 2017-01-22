@@ -340,6 +340,12 @@ namespace artfulplace.Nereid
         }
         #endregion
 
+        #region menu
+        public Office.RibbonControlSize NereidMenu_GetSize(Office.IRibbonControl arg)
+        {
+            return ((Menu)ItemsDictionary[arg.Id]).GetSize();
+        }
+        #endregion
 
         #region separator
         public bool NereidSeparator_GetVisible(Office.IRibbonControl arg)

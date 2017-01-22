@@ -21,4 +21,6 @@ namespace artfulplace.Nereid.Definitions
 
     public interface IButtonBase : IGroupChild { }
     public interface IDropDownChid { }
+
+    public interface IMenuChild : IRibbonItem { }
 }
